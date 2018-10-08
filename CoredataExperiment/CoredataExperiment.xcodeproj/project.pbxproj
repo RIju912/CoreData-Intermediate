@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		90377798216B4F3200F2547C /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90377797216B4F3200F2547C /* CustomNavigationController.swift */; };
+		9037779A216BA45700F2547C /* UIColor+theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90377799216BA45700F2547C /* UIColor+theme.swift */; };
 		90B8D76620F74DDD00803200 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8D76520F74DDD00803200 /* AppDelegate.swift */; };
 		90B8D76820F74DDD00803200 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8D76720F74DDD00803200 /* ViewController.swift */; };
 		90B8D76B20F74DDD00803200 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90B8D76920F74DDD00803200 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		90377797216B4F3200F2547C /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		90377799216BA45700F2547C /* UIColor+theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+theme.swift"; sourceTree = "<group>"; };
 		90B8D76220F74DDD00803200 /* CoredataExperiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoredataExperiment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90B8D76520F74DDD00803200 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90B8D76720F74DDD00803200 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +43,7 @@
 			isa = PBXGroup;
 			children = (
 				90377797216B4F3200F2547C /* CustomNavigationController.swift */,
+				90377799216BA45700F2547C /* UIColor+theme.swift */,
 			);
 			path = CustomClasses;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90377798216B4F3200F2547C /* CustomNavigationController.swift in Sources */,
+				9037779A216BA45700F2547C /* UIColor+theme.swift in Sources */,
 				90B8D76820F74DDD00803200 /* ViewController.swift in Sources */,
 				90B8D76620F74DDD00803200 /* AppDelegate.swift in Sources */,
 			);
