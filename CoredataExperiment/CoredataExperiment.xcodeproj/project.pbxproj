@@ -12,6 +12,7 @@
 		9037779D216C82FC00F2547C /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9037779C216C82FC00F2547C /* School.swift */; };
 		903777A0216C892900F2547C /* SchoolAdditionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9037779F216C892900F2547C /* SchoolAdditionController.swift */; };
 		903777A2216C89F200F2547C /* UIViewController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903777A1216C89F200F2547C /* UIViewController+extensions.swift */; };
+		903777A5216CAF6300F2547C /* SchoolProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903777A4216CAF6300F2547C /* SchoolProtocol.swift */; };
 		90B8D76620F74DDD00803200 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8D76520F74DDD00803200 /* AppDelegate.swift */; };
 		90B8D76820F74DDD00803200 /* SchoolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8D76720F74DDD00803200 /* SchoolsViewController.swift */; };
 		90B8D76B20F74DDD00803200 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90B8D76920F74DDD00803200 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 		9037779C216C82FC00F2547C /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
 		9037779F216C892900F2547C /* SchoolAdditionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolAdditionController.swift; sourceTree = "<group>"; };
 		903777A1216C89F200F2547C /* UIViewController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+extensions.swift"; sourceTree = "<group>"; };
+		903777A4216CAF6300F2547C /* SchoolProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolProtocol.swift; sourceTree = "<group>"; };
 		90B8D76220F74DDD00803200 /* CoredataExperiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoredataExperiment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90B8D76520F74DDD00803200 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90B8D76720F74DDD00803200 /* SchoolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolsViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		903777A3216CAF4F00F2547C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				903777A4216CAF6300F2547C /* SchoolProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		90B8D75920F74DDD00803200 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +101,7 @@
 		90B8D76420F74DDD00803200 /* CoredataExperiment */ = {
 			isa = PBXGroup;
 			children = (
+				903777A3216CAF4F00F2547C /* Protocols */,
 				9037779E216C890700F2547C /* Controller */,
 				9037779B216C82E800F2547C /* Model */,
 				90377796216B4F1F00F2547C /* CustomClasses */,
@@ -175,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90377798216B4F3200F2547C /* CustomNavigationController.swift in Sources */,
+				903777A5216CAF6300F2547C /* SchoolProtocol.swift in Sources */,
 				9037779A216BA45700F2547C /* UIColor+theme.swift in Sources */,
 				903777A2216C89F200F2547C /* UIViewController+extensions.swift in Sources */,
 				903777A0216C892900F2547C /* SchoolAdditionController.swift in Sources */,

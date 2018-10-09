@@ -10,7 +10,7 @@ import UIKit
 
 class SchoolsViewController: UITableViewController {
 
-    let schools = [
+    var schools = [
         School(name: "RKMVP", founded: Date()),
         School(name: "BZS", founded: Date())
     ]
@@ -44,6 +44,7 @@ extension SchoolsViewController{
     @objc func performRightBarAction(){
         let createSchoolController = SchoolAdditionController()
         let navCOntroller = CustomNavigationController(rootViewController: createSchoolController)
+        createSchoolController.addSchoolDelegate = self
         present(navCOntroller, animated: true, completion: nil)
     }
 }
@@ -73,5 +74,16 @@ extension SchoolsViewController{
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
+    }
+}
+
+
+
+//MARK: Add School Delegate
+extension SchoolsViewController: SchoolAdditionDelegate{
+    func addSchoolDelegate(school: School){
+        schools.append(school)
+        let newIndexPath = IndexPath(row: schools.count - 1, section: 0)
+        tableView.insertRows(at: [newIndexPath], with: .automatic)
     }
 }
