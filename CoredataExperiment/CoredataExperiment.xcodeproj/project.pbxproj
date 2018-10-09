@@ -9,8 +9,11 @@
 /* Begin PBXBuildFile section */
 		90377798216B4F3200F2547C /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90377797216B4F3200F2547C /* CustomNavigationController.swift */; };
 		9037779A216BA45700F2547C /* UIColor+theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90377799216BA45700F2547C /* UIColor+theme.swift */; };
+		9037779D216C82FC00F2547C /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9037779C216C82FC00F2547C /* School.swift */; };
+		903777A0216C892900F2547C /* SchoolAdditionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9037779F216C892900F2547C /* SchoolAdditionController.swift */; };
+		903777A2216C89F200F2547C /* UIViewController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903777A1216C89F200F2547C /* UIViewController+extensions.swift */; };
 		90B8D76620F74DDD00803200 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8D76520F74DDD00803200 /* AppDelegate.swift */; };
-		90B8D76820F74DDD00803200 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8D76720F74DDD00803200 /* ViewController.swift */; };
+		90B8D76820F74DDD00803200 /* SchoolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8D76720F74DDD00803200 /* SchoolsViewController.swift */; };
 		90B8D76B20F74DDD00803200 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90B8D76920F74DDD00803200 /* Main.storyboard */; };
 		90B8D76D20F74DDF00803200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90B8D76C20F74DDF00803200 /* Assets.xcassets */; };
 		90B8D77020F74DDF00803200 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90B8D76E20F74DDF00803200 /* LaunchScreen.storyboard */; };
@@ -19,9 +22,12 @@
 /* Begin PBXFileReference section */
 		90377797216B4F3200F2547C /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		90377799216BA45700F2547C /* UIColor+theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+theme.swift"; sourceTree = "<group>"; };
+		9037779C216C82FC00F2547C /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
+		9037779F216C892900F2547C /* SchoolAdditionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolAdditionController.swift; sourceTree = "<group>"; };
+		903777A1216C89F200F2547C /* UIViewController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+extensions.swift"; sourceTree = "<group>"; };
 		90B8D76220F74DDD00803200 /* CoredataExperiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoredataExperiment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90B8D76520F74DDD00803200 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		90B8D76720F74DDD00803200 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		90B8D76720F74DDD00803200 /* SchoolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolsViewController.swift; sourceTree = "<group>"; };
 		90B8D76A20F74DDD00803200 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		90B8D76C20F74DDF00803200 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90B8D76F20F74DDF00803200 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -44,8 +50,26 @@
 			children = (
 				90377797216B4F3200F2547C /* CustomNavigationController.swift */,
 				90377799216BA45700F2547C /* UIColor+theme.swift */,
+				903777A1216C89F200F2547C /* UIViewController+extensions.swift */,
 			);
 			path = CustomClasses;
+			sourceTree = "<group>";
+		};
+		9037779B216C82E800F2547C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9037779C216C82FC00F2547C /* School.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9037779E216C890700F2547C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				90B8D76720F74DDD00803200 /* SchoolsViewController.swift */,
+				9037779F216C892900F2547C /* SchoolAdditionController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		90B8D75920F74DDD00803200 = {
@@ -67,9 +91,10 @@
 		90B8D76420F74DDD00803200 /* CoredataExperiment */ = {
 			isa = PBXGroup;
 			children = (
+				9037779E216C890700F2547C /* Controller */,
+				9037779B216C82E800F2547C /* Model */,
 				90377796216B4F1F00F2547C /* CustomClasses */,
 				90B8D76520F74DDD00803200 /* AppDelegate.swift */,
-				90B8D76720F74DDD00803200 /* ViewController.swift */,
 				90B8D76920F74DDD00803200 /* Main.storyboard */,
 				90B8D76C20F74DDF00803200 /* Assets.xcassets */,
 				90B8D76E20F74DDF00803200 /* LaunchScreen.storyboard */,
@@ -151,7 +176,10 @@
 			files = (
 				90377798216B4F3200F2547C /* CustomNavigationController.swift in Sources */,
 				9037779A216BA45700F2547C /* UIColor+theme.swift in Sources */,
-				90B8D76820F74DDD00803200 /* ViewController.swift in Sources */,
+				903777A2216C89F200F2547C /* UIViewController+extensions.swift in Sources */,
+				903777A0216C892900F2547C /* SchoolAdditionController.swift in Sources */,
+				90B8D76820F74DDD00803200 /* SchoolsViewController.swift in Sources */,
+				9037779D216C82FC00F2547C /* School.swift in Sources */,
 				90B8D76620F74DDD00803200 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

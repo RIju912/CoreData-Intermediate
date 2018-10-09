@@ -8,12 +8,18 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+class SchoolsViewController: UITableViewController {
 
+    let schools = [
+        School(name: "RKMVP", founded: Date()),
+        School(name: "BZS", founded: Date())
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = "Schools"
         view.backgroundColor = .white
-        setUpNavigationController()
         setupNavigationRightbarItem()
         setupTableView()
     }
@@ -22,17 +28,7 @@ class ViewController: UITableViewController {
 }
 
 //MARK: UI related stuffs
-extension ViewController{
-    
-    func setUpNavigationController(){
-        navigationItem.title = "Schools"
-        navigationController?.navigationBar.isTranslucent = false
-        let transparentBlueColor = UIColor(red: 108/255, green: 164/255, blue: 200/255, alpha: 0.8)
-        navigationController?.navigationBar.barTintColor = transparentBlueColor
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-    }
+extension SchoolsViewController{
     
     func setupNavigationRightbarItem(){
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus"), style: .plain, target: self, action: #selector(performRightBarAction))
@@ -41,30 +37,32 @@ extension ViewController{
     func setupTableView(){
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellID")
         tableView.separatorColor = .white
-        //tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor(red: 9/255, green: 45/255, blue: 64/255, alpha: 0.8)
         tableView.tableFooterView = UIView()
     }
     
     @objc func performRightBarAction(){
-        print("Right bar action.")
+        let createSchoolController = SchoolAdditionController()
+        let navCOntroller = CustomNavigationController(rootViewController: createSchoolController)
+        present(navCOntroller, animated: true, completion: nil)
     }
 }
 
 //MARK: TableView Delegate & Datasource
-extension ViewController{
+extension SchoolsViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath)
         cell.backgroundColor = UIColor(red: 247/255, green: 66/255, blue: 82/255, alpha: 1)
-        cell.textLabel?.text = "School Name"
+        let school = schools[indexPath.row]
+        cell.textLabel?.text = school.name
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         cell.textLabel?.textColor = .white
         return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return schools.count
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

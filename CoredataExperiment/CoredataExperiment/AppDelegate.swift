@@ -19,13 +19,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
         setUpRootView()
+        setUpNavigationController()
         return true
     }
     
     func setUpRootView(){
-        let vc = ViewController()
+        let vc = SchoolsViewController()
         let navigationController = CustomNavigationController(rootViewController: vc)
         window?.rootViewController = navigationController
+    }
+    
+    func setUpNavigationController(){
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().isTranslucent = false
+        let transparentBlueColor = UIColor(red: 108/255, green: 164/255, blue: 200/255, alpha: 0.8)
+        UINavigationBar.appearance().barTintColor = transparentBlueColor
+        UINavigationBar.appearance().prefersLargeTitles = true
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
     }
     
 }
