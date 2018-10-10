@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SchoolAdditionController: UIViewController {
     
@@ -42,6 +43,7 @@ class SchoolAdditionController: UIViewController {
 
 }
 
+//MARK: UI Related stuffs
 extension SchoolAdditionController{
     
     private func setupNavigationUI(){
@@ -85,11 +87,29 @@ extension SchoolAdditionController{
         dismiss(animated: true, completion: nil)
     }
     
+}
+
+
+//MARK: Core Data Related stuffs
+extension SchoolAdditionController{
+    
     @objc func handleSave(){
-        dismiss(animated: true){
-            guard let name = self.enterNameTextField.text else { return }
-            let schoolName = School(name: name, founded: Date())
-            self.addSchoolDelegate?.addSchoolDelegate(school: schoolName)
+        
+        //Get the entity to insert the new object
+        let school = NSEntityDescription.insertNewObject(forEntityName: "School", into: CoreDataSingleton.shared.persistantContainer.viewContext)
+        guard let name = self.enterNameTextField.text else { return }
+        //set the value for the entity
+        school.setValue(name, forKey: "name")
+        
+        do{
+            //save the value
+            try CoreDataSingleton.shared.persistantContainer.viewContext.save()
+            dismiss(animated: true){
+                self.addSchoolDelegate?.addSchoolDelegate(school: school as! School)
+            }
+        }catch let saveErr{
+            print("Failed with \(saveErr)")
         }
+        
     }
 }

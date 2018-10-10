@@ -13,6 +13,8 @@
 		903777A0216C892900F2547C /* SchoolAdditionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9037779F216C892900F2547C /* SchoolAdditionController.swift */; };
 		903777A2216C89F200F2547C /* UIViewController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903777A1216C89F200F2547C /* UIViewController+extensions.swift */; };
 		903777A5216CAF6300F2547C /* SchoolProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903777A4216CAF6300F2547C /* SchoolProtocol.swift */; };
+		9078AEF7216CDC88000FE76B /* CoredataExperiment.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9078AEF5216CDC88000FE76B /* CoredataExperiment.xcdatamodeld */; };
+		9078AEF9216CE65B000FE76B /* CoreDataSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9078AEF8216CE65B000FE76B /* CoreDataSingleton.swift */; };
 		90B8D76620F74DDD00803200 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8D76520F74DDD00803200 /* AppDelegate.swift */; };
 		90B8D76820F74DDD00803200 /* SchoolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8D76720F74DDD00803200 /* SchoolsViewController.swift */; };
 		90B8D76B20F74DDD00803200 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90B8D76920F74DDD00803200 /* Main.storyboard */; };
@@ -27,6 +29,8 @@
 		9037779F216C892900F2547C /* SchoolAdditionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolAdditionController.swift; sourceTree = "<group>"; };
 		903777A1216C89F200F2547C /* UIViewController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+extensions.swift"; sourceTree = "<group>"; };
 		903777A4216CAF6300F2547C /* SchoolProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolProtocol.swift; sourceTree = "<group>"; };
+		9078AEF6216CDC88000FE76B /* CoredataExperiment.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoredataExperiment.xcdatamodel; sourceTree = "<group>"; };
+		9078AEF8216CE65B000FE76B /* CoreDataSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSingleton.swift; sourceTree = "<group>"; };
 		90B8D76220F74DDD00803200 /* CoredataExperiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoredataExperiment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90B8D76520F74DDD00803200 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90B8D76720F74DDD00803200 /* SchoolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolsViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +86,15 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		9078AEF4216CDC77000FE76B /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				9078AEF5216CDC88000FE76B /* CoredataExperiment.xcdatamodeld */,
+				9078AEF8216CE65B000FE76B /* CoreDataSingleton.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		90B8D75920F74DDD00803200 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +114,7 @@
 		90B8D76420F74DDD00803200 /* CoredataExperiment */ = {
 			isa = PBXGroup;
 			children = (
+				9078AEF4216CDC77000FE76B /* CoreData */,
 				903777A3216CAF4F00F2547C /* Protocols */,
 				9037779E216C890700F2547C /* Controller */,
 				9037779B216C82E800F2547C /* Model */,
@@ -189,7 +203,9 @@
 				903777A5216CAF6300F2547C /* SchoolProtocol.swift in Sources */,
 				9037779A216BA45700F2547C /* UIColor+theme.swift in Sources */,
 				903777A2216C89F200F2547C /* UIViewController+extensions.swift in Sources */,
+				9078AEF7216CDC88000FE76B /* CoredataExperiment.xcdatamodeld in Sources */,
 				903777A0216C892900F2547C /* SchoolAdditionController.swift in Sources */,
+				9078AEF9216CE65B000FE76B /* CoreDataSingleton.swift in Sources */,
 				90B8D76820F74DDD00803200 /* SchoolsViewController.swift in Sources */,
 				9037779D216C82FC00F2547C /* School.swift in Sources */,
 				90B8D76620F74DDD00803200 /* AppDelegate.swift in Sources */,
@@ -392,6 +408,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9078AEF5216CDC88000FE76B /* CoredataExperiment.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9078AEF6216CDC88000FE76B /* CoredataExperiment.xcdatamodel */,
+			);
+			currentVersion = 9078AEF6216CDC88000FE76B /* CoredataExperiment.xcdatamodel */;
+			path = CoredataExperiment.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 90B8D75A20F74DDD00803200 /* Project object */;
 }

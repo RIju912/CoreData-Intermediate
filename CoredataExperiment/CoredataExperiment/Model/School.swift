@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct School{
-    let name: String
-    let founded: Date
-}
+//struct School{
+//    let name: String
+//    let founded: Date
+//}

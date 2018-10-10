@@ -7,13 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class SchoolsViewController: UITableViewController {
 
-    var schools = [
-        School(name: "RKMVP", founded: Date()),
-        School(name: "BZS", founded: Date())
-    ]
+    var schools = [School]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +20,7 @@ class SchoolsViewController: UITableViewController {
         view.backgroundColor = .white
         setupNavigationRightbarItem()
         setupTableView()
+        fetchCompanies()
     }
 
     
@@ -87,3 +86,22 @@ extension SchoolsViewController: SchoolAdditionDelegate{
         tableView.insertRows(at: [newIndexPath], with: .automatic)
     }
 }
+
+//MARK: Core Data Related stuffs
+extension SchoolsViewController{
+    private func fetchCompanies(){
+        //Fetch the List
+        let fetchRequest = NSFetchRequest<School>(entityName: "School")
+        do{
+            let schoolName = try CoreDataSingleton.shared.persistantContainer.viewContext.fetch(fetchRequest)
+            self.schools = schoolName
+            tableView.reloadData()
+        } catch let err{
+            print("fetch with \(err)")
+        }
+       
+        
+    }
+}
+
+
