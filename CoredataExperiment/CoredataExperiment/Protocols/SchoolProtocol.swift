@@ -11,4 +11,5 @@ import Foundation
 //Custom Delegation [Abstract]
 protocol SchoolAdditionDelegate: class{
     func addSchoolDelegate(school: School)
+    func editSchoolDelegate(school: School)
 }

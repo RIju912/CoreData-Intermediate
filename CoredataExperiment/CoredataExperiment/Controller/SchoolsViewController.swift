@@ -76,21 +76,9 @@ extension SchoolsViewController{
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (_, indexPath) in
-            let deletedSchool = self.schools[indexPath.row]
-            self.schools.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)            
-            CoreDataSingleton.shared.persistantContainer.viewContext.delete(deletedSchool)
-            do{
-                try CoreDataSingleton.shared.persistantContainer.viewContext.save()
-            }catch let saveErr{
-                print("Failed with \(saveErr)")
-            }
-        }
         
-        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (_, indexPath) in
-            print(indexPath)
-        }
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler: deletingRowHandler)
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit", handler: editingRowHandler)
         
         return [deleteAction, editAction]
     }
@@ -102,6 +90,11 @@ extension SchoolsViewController: SchoolAdditionDelegate{
         schools.append(school)
         let newIndexPath = IndexPath(row: schools.count - 1, section: 0)
         tableView.insertRows(at: [newIndexPath], with: .automatic)
+    }
+    
+    func editSchoolDelegate(school: School){
+        guard let row = schools.index(of: school) else { return }
+        tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .fade)
     }
 }
 

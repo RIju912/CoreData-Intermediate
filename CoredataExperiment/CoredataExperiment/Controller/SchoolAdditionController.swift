@@ -34,11 +34,21 @@ class SchoolAdditionController: UIViewController {
     }()
     //: not tightly coupled
     weak var addSchoolDelegate: SchoolAdditionDelegate?
+    var schoolName: School?{
+        didSet{
+            enterNameTextField.text = schoolName?.name
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationUI()
         setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = schoolName == nil ? "Add School" : "Edit School"
     }
 
 }
@@ -48,7 +58,6 @@ extension SchoolAdditionController{
     
     private func setupNavigationUI(){
         view.backgroundColor = .blue
-        navigationItem.title = "Add School"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(handleBack))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
     }
@@ -94,7 +103,23 @@ extension SchoolAdditionController{
 extension SchoolAdditionController{
     
     @objc func handleSave(){
-        
+        schoolName == nil ? createCompany() : saveEditedCompany()
+    }
+    
+    private func saveEditedCompany(){
+        guard let editedSchool = schoolName else { return }
+        editedSchool.name = enterNameTextField.text
+        do{
+            try CoreDataSingleton.shared.persistantContainer.viewContext.save()
+            dismiss(animated: true){
+                self.addSchoolDelegate?.editSchoolDelegate(school: editedSchool)
+            }
+        }catch let saveErr{
+            print("Failed with \(saveErr)")
+        }
+    }
+    
+    private func createCompany(){
         //Get the entity to insert the new object
         let school = NSEntityDescription.insertNewObject(forEntityName: "School", into: CoreDataSingleton.shared.persistantContainer.viewContext)
         guard let name = self.enterNameTextField.text else { return }
@@ -110,6 +135,5 @@ extension SchoolAdditionController{
         }catch let saveErr{
             print("Failed with \(saveErr)")
         }
-        
     }
 }
