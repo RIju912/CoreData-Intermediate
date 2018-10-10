@@ -74,9 +74,27 @@ extension SchoolsViewController{
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (_, indexPath) in
+            let deletedSchool = self.schools[indexPath.row]
+            self.schools.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)            
+            CoreDataSingleton.shared.persistantContainer.viewContext.delete(deletedSchool)
+            do{
+                try CoreDataSingleton.shared.persistantContainer.viewContext.save()
+            }catch let saveErr{
+                print("Failed with \(saveErr)")
+            }
+        }
+        
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (_, indexPath) in
+            print(indexPath)
+        }
+        
+        return [deleteAction, editAction]
+    }
 }
-
-
 
 //MARK: Add School Delegate
 extension SchoolsViewController: SchoolAdditionDelegate{
@@ -99,7 +117,6 @@ extension SchoolsViewController{
         } catch let err{
             print("fetch with \(err)")
         }
-       
         
     }
 }
