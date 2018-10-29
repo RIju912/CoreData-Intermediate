@@ -66,6 +66,12 @@ extension SchoolsViewController{
         }
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         cell.textLabel?.textColor = .white
+        if let imageData = school.imageData{
+            cell.imageView?.image = UIImage(data: imageData)
+        }else{
+            cell.imageView?.image = #imageLiteral(resourceName: "photo_empty")
+        }
+        
         return cell
     }
     

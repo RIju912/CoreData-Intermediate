@@ -9,11 +9,10 @@
 import Foundation
 import UIKit
 
-extension UIViewController{
+extension UINavigationController{
     
-    func setUpNavigationController(){
-        // Moved to app delegate as appearance proxy.
-
+    override open var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
     }
     
 }
