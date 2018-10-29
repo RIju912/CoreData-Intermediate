@@ -32,11 +32,21 @@ class SchoolAdditionController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
+    
+    let datePicker: UIDatePicker = {
+        let dPicker = UIDatePicker()
+        dPicker.translatesAutoresizingMaskIntoConstraints = false
+        dPicker.datePickerMode = .date
+        return dPicker
+    }()
+    
     //: not tightly coupled
     weak var addSchoolDelegate: SchoolAdditionDelegate?
     var schoolName: School?{
         didSet{
             enterNameTextField.text = schoolName?.name
+            guard let founded = schoolName?.founded else { return }
+            datePicker.date = founded
         }
     }
     
@@ -66,6 +76,7 @@ extension SchoolAdditionController{
         setupBackgroundView()
         setupNameLabel()
         setupTextField()
+        setupDatePicker()
     }
     
     private func setupNameLabel(){
@@ -81,7 +92,7 @@ extension SchoolAdditionController{
         lightBackgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         lightBackgroundView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         lightBackgroundView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        lightBackgroundView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        lightBackgroundView.heightAnchor.constraint(equalToConstant: 250).isActive = true
     }
     
     private func setupTextField(){
@@ -91,6 +102,15 @@ extension SchoolAdditionController{
         enterNameTextField.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         enterNameTextField.bottomAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
     }
+    
+    private func setupDatePicker(){
+        view.addSubview(datePicker)
+        datePicker.topAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
+        datePicker.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        datePicker.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        datePicker.bottomAnchor.constraint(equalTo: lightBackgroundView.bottomAnchor).isActive = true
+    }
+    
     
     @objc func handleBack(){
         dismiss(animated: true, completion: nil)
@@ -109,6 +129,7 @@ extension SchoolAdditionController{
     private func saveEditedCompany(){
         guard let editedSchool = schoolName else { return }
         editedSchool.name = enterNameTextField.text
+        editedSchool.founded = datePicker.date
         do{
             try CoreDataSingleton.shared.persistantContainer.viewContext.save()
             dismiss(animated: true){
@@ -125,6 +146,7 @@ extension SchoolAdditionController{
         guard let name = self.enterNameTextField.text else { return }
         //set the value for the entity
         school.setValue(name, forKey: "name")
+        school.setValue(datePicker.date, forKey: "founded")
         
         do{
             //save the value

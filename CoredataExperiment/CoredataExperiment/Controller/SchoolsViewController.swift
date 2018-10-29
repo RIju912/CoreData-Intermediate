@@ -55,7 +55,15 @@ extension SchoolsViewController{
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath)
         cell.backgroundColor = UIColor(red: 247/255, green: 66/255, blue: 82/255, alpha: 1)
         let school = schools[indexPath.row]
-        cell.textLabel?.text = school.name
+        if let name = school.name, let foundedDate = school.founded{
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM dd, yyyy"
+            let formattedDate = dateFormatter.string(from: foundedDate)
+            let concatenatedString = "\(name) - Founded: \(formattedDate)"
+            cell.textLabel?.text = concatenatedString
+        }else{
+           cell.textLabel?.text = school.name
+        }
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         cell.textLabel?.textColor = .white
         return cell
