@@ -23,4 +23,15 @@ struct CoreDataSingleton{
         }
         return persistantContainer
     }()
+    
+    func fetchCompanies() -> [School]{
+        let fetchRequest = NSFetchRequest<School>(entityName: "School")
+        do{
+            let schoolDetails = try persistantContainer.viewContext.fetch(fetchRequest)
+            return schoolDetails
+        } catch let err{
+            print("fetch with \(err)")
+            return []
+        }
+    }
 }

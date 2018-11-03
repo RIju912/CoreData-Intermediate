@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9021C0A521870C5A00121655 /* SchoolAdditionController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021C0A421870C5A00121655 /* SchoolAdditionController+Helper.swift */; };
+		9026F867218DDBD9001B695A /* SchoolsViewController+CreateSchool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026F866218DDBD9001B695A /* SchoolsViewController+CreateSchool.swift */; };
+		9026F869218DDC83001B695A /* SchoolsViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026F868218DDC83001B695A /* SchoolsViewController+UITableView.swift */; };
 		90377798216B4F3200F2547C /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90377797216B4F3200F2547C /* CustomNavigationController.swift */; };
 		9037779A216BA45700F2547C /* UIColor+theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90377799216BA45700F2547C /* UIColor+theme.swift */; };
 		9037779D216C82FC00F2547C /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9037779C216C82FC00F2547C /* School.swift */; };
@@ -27,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		9021C0A421870C5A00121655 /* SchoolAdditionController+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SchoolAdditionController+Helper.swift"; sourceTree = "<group>"; };
+		9026F866218DDBD9001B695A /* SchoolsViewController+CreateSchool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SchoolsViewController+CreateSchool.swift"; sourceTree = "<group>"; };
+		9026F868218DDC83001B695A /* SchoolsViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SchoolsViewController+UITableView.swift"; sourceTree = "<group>"; };
 		90377797216B4F3200F2547C /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		90377799216BA45700F2547C /* UIColor+theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+theme.swift"; sourceTree = "<group>"; };
 		9037779C216C82FC00F2547C /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
@@ -57,6 +61,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9026F86A218DDCEE001B695A /* ViewSchool */ = {
+			isa = PBXGroup;
+			children = (
+				90B8D76720F74DDD00803200 /* SchoolsViewController.swift */,
+				9078AEFA216DEA1C000FE76B /* SchoolsViewController+Helper.swift */,
+				9026F866218DDBD9001B695A /* SchoolsViewController+CreateSchool.swift */,
+				9026F868218DDC83001B695A /* SchoolsViewController+UITableView.swift */,
+			);
+			path = ViewSchool;
+			sourceTree = "<group>";
+		};
+		9026F86B218DDD03001B695A /* AddSchool */ = {
+			isa = PBXGroup;
+			children = (
+				9037779F216C892900F2547C /* SchoolAdditionController.swift */,
+				9021C0A421870C5A00121655 /* SchoolAdditionController+Helper.swift */,
+			);
+			path = AddSchool;
+			sourceTree = "<group>";
+		};
 		90377796216B4F1F00F2547C /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,10 +102,8 @@
 		9037779E216C890700F2547C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				90B8D76720F74DDD00803200 /* SchoolsViewController.swift */,
-				9078AEFA216DEA1C000FE76B /* SchoolsViewController+Helper.swift */,
-				9037779F216C892900F2547C /* SchoolAdditionController.swift */,
-				9021C0A421870C5A00121655 /* SchoolAdditionController+Helper.swift */,
+				9026F86B218DDD03001B695A /* AddSchool */,
+				9026F86A218DDCEE001B695A /* ViewSchool */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -227,11 +249,13 @@
 			files = (
 				90377798216B4F3200F2547C /* CustomNavigationController.swift in Sources */,
 				90E08594218DB455007B49F1 /* SchoolsCell.swift in Sources */,
+				9026F867218DDBD9001B695A /* SchoolsViewController+CreateSchool.swift in Sources */,
 				903777A5216CAF6300F2547C /* SchoolProtocol.swift in Sources */,
 				9037779A216BA45700F2547C /* UIColor+theme.swift in Sources */,
 				903777A2216C89F200F2547C /* UIViewController+extensions.swift in Sources */,
 				9078AEF7216CDC88000FE76B /* CoredataExperiment.xcdatamodeld in Sources */,
 				9078AEFB216DEA1C000FE76B /* SchoolsViewController+Helper.swift in Sources */,
+				9026F869218DDC83001B695A /* SchoolsViewController+UITableView.swift in Sources */,
 				903777A0216C892900F2547C /* SchoolAdditionController.swift in Sources */,
 				9021C0A521870C5A00121655 /* SchoolAdditionController+Helper.swift in Sources */,
 				9078AEF9216CE65B000FE76B /* CoreDataSingleton.swift in Sources */,
