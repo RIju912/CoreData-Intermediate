@@ -22,6 +22,7 @@
 		90B8D76B20F74DDD00803200 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90B8D76920F74DDD00803200 /* Main.storyboard */; };
 		90B8D76D20F74DDF00803200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90B8D76C20F74DDF00803200 /* Assets.xcassets */; };
 		90B8D77020F74DDF00803200 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90B8D76E20F74DDF00803200 /* LaunchScreen.storyboard */; };
+		90E08594218DB455007B49F1 /* SchoolsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E08593218DB455007B49F1 /* SchoolsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		90B8D76C20F74DDF00803200 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = CoredataExperiment/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		90B8D76F20F74DDF00803200 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90B8D77120F74DDF00803200 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90E08593218DB455007B49F1 /* SchoolsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 		90B8D76420F74DDD00803200 /* CoredataExperiment */ = {
 			isa = PBXGroup;
 			children = (
+				90E08591218DB41C007B49F1 /* View */,
 				9078AEF4216CDC77000FE76B /* CoreData */,
 				903777A3216CAF4F00F2547C /* Protocols */,
 				9037779E216C890700F2547C /* Controller */,
@@ -132,6 +135,22 @@
 				90B8D77120F74DDF00803200 /* Info.plist */,
 			);
 			path = CoredataExperiment;
+			sourceTree = "<group>";
+		};
+		90E08591218DB41C007B49F1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				90E08592218DB43D007B49F1 /* SchoolCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		90E08592218DB43D007B49F1 /* SchoolCell */ = {
+			isa = PBXGroup;
+			children = (
+				90E08593218DB455007B49F1 /* SchoolsCell.swift */,
+			);
+			path = SchoolCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90377798216B4F3200F2547C /* CustomNavigationController.swift in Sources */,
+				90E08594218DB455007B49F1 /* SchoolsCell.swift in Sources */,
 				903777A5216CAF6300F2547C /* SchoolProtocol.swift in Sources */,
 				9037779A216BA45700F2547C /* UIColor+theme.swift in Sources */,
 				903777A2216C89F200F2547C /* UIViewController+extensions.swift in Sources */,

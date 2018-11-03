@@ -39,7 +39,7 @@ extension SchoolsViewController{
     }
     
     func setupTableView(){
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellID")
+        tableView.register(SchoolsCell.self, forCellReuseIdentifier: "cellID")
         tableView.separatorColor = .white
         tableView.backgroundColor = UIColor(red: 9/255, green: 45/255, blue: 64/255, alpha: 0.8)
         tableView.tableFooterView = UIView()
@@ -74,27 +74,15 @@ extension SchoolsViewController{
 extension SchoolsViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath)
-        cell.backgroundColor = UIColor(red: 247/255, green: 66/255, blue: 82/255, alpha: 1)
-        let school = schools[indexPath.row]
-        if let name = school.name, let foundedDate = school.founded{
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM dd, yyyy"
-            let formattedDate = dateFormatter.string(from: foundedDate)
-            let concatenatedString = "\(name) - Founded: \(formattedDate)"
-            cell.textLabel?.text = concatenatedString
-        }else{
-           cell.textLabel?.text = school.name
-        }
-        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        cell.textLabel?.textColor = .white
-        if let imageData = school.imageData{
-            cell.imageView?.image = UIImage(data: imageData)
-        }else{
-            cell.imageView?.image = #imageLiteral(resourceName: "photo_empty")
-        }
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as! SchoolsCell
+        let school = schools[indexPath.row]
+        cell.schoolDetails = school
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
