@@ -158,7 +158,7 @@ extension SchoolAdditionController{
         editedSchool.name = enterNameTextField.text
         editedSchool.founded = datePicker.date
         if let companyImage = companyImageView.image{
-            let imageData = UIImageJPEGRepresentation(companyImage, 0.8)
+            let imageData = companyImage.jpegData(compressionQuality: 0.8)
             editedSchool.imageData = imageData
         }
         do{
@@ -179,7 +179,7 @@ extension SchoolAdditionController{
         school.setValue(name, forKey: "name")
         school.setValue(datePicker.date, forKey: "founded")
         if let companyImage = companyImageView.image{
-            let imageData = UIImageJPEGRepresentation(companyImage, 0.8)
+            let imageData = companyImage.jpegData(compressionQuality: 0.8)
             school.setValue(imageData, forKey: "imageData")
         }
         
