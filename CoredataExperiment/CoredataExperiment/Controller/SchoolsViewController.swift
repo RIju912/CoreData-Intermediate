@@ -19,6 +19,7 @@ class SchoolsViewController: UITableViewController {
         navigationItem.title = "Schools"
         view.backgroundColor = .white
         setupNavigationRightbarItem()
+        setupNavigationLeftbarItem()
         setupTableView()
         fetchCompanies()
     }
@@ -29,6 +30,10 @@ class SchoolsViewController: UITableViewController {
 //MARK: UI related stuffs
 extension SchoolsViewController{
     
+    func setupNavigationLeftbarItem(){
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(performResetAction))
+    }
+    
     func setupNavigationRightbarItem(){
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus"), style: .plain, target: self, action: #selector(performRightBarAction))
     }
@@ -38,6 +43,23 @@ extension SchoolsViewController{
         tableView.separatorColor = .white
         tableView.backgroundColor = UIColor(red: 9/255, green: 45/255, blue: 64/255, alpha: 0.8)
         tableView.tableFooterView = UIView()
+    }
+    
+    @objc func performResetAction(){
+        
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: School.fetchRequest())
+        do{
+            try CoreDataSingleton.shared.persistantContainer.viewContext.execute(batchDeleteRequest)
+            var indexPathToRemove = [IndexPath]()
+            for (index, _) in schools.enumerated(){
+                let indexPath = IndexPath(row: index, section: 0)
+                indexPathToRemove.append(indexPath)
+            }
+            schools.removeAll()
+            tableView.deleteRows(at: indexPathToRemove, with: .left)
+        } catch let err{
+            print("fetch with \(err)")
+        }
     }
     
     @objc func performRightBarAction(){
@@ -87,6 +109,19 @@ extension SchoolsViewController{
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = "No Schools added"
+        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.textAlignment = .center
+        return label
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return schools.count == 0 ? 150 : 0
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
