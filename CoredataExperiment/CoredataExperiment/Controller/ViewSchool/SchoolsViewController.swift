@@ -21,7 +21,7 @@ class SchoolsViewController: UITableViewController {
         setupNavigationRightbarItem()
         setupNavigationLeftbarItem()
         setupTableView()
-        fetchCompanies()
+        fetchSchools()
     }
 
     
@@ -74,8 +74,8 @@ extension SchoolsViewController{
 
 //MARK: Core Data Related stuffs
 extension SchoolsViewController{
-    private func fetchCompanies(){
-        self.schools = CoreDataSingleton.shared.fetchCompanies()
+    private func fetchSchools(){
+        self.schools = CoreDataSingleton.shared.fetchSchools()
     }
 }
 

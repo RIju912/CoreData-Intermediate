@@ -24,7 +24,7 @@ struct CoreDataSingleton{
         return persistantContainer
     }()
     
-    func fetchCompanies() -> [School]{
+    func fetchSchools() -> [School]{
         let fetchRequest = NSFetchRequest<School>(entityName: "School")
         do{
             let schoolDetails = try persistantContainer.viewContext.fetch(fetchRequest)
