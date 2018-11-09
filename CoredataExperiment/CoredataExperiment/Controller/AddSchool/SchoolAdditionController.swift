@@ -19,13 +19,6 @@ class SchoolAdditionController: UIViewController {
         return label
     }()
     
-    let lightBackgroundView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(red: 224/255, green: 255/255, blue: 255/255, alpha: 1)
-        return view
-    }()
-    
     let enterNameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Enter Name"
@@ -86,20 +79,14 @@ extension SchoolAdditionController{
     }
     
     private func setupUI(){
-        setupBackgroundView()
+        let lightBackgroundView = setupBackgroundView(height: 350)
         setupCompanyImageView()
         setupNameLabel()
         setupTextField()
-        setupDatePicker()
+        setupDatePicker(viewBackground: lightBackgroundView)
     }
     
-    private func setupBackgroundView(){
-        view.addSubview(lightBackgroundView)
-        lightBackgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        lightBackgroundView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        lightBackgroundView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        lightBackgroundView.heightAnchor.constraint(equalToConstant: 350).isActive = true
-    }
+    
     
     private func setupCompanyImageView(){
         view.addSubview(companyImageView)
@@ -125,12 +112,12 @@ extension SchoolAdditionController{
         enterNameTextField.bottomAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
     }
     
-    private func setupDatePicker(){
+    private func setupDatePicker(viewBackground: UIView){
         view.addSubview(datePicker)
         datePicker.topAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
         datePicker.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         datePicker.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        datePicker.bottomAnchor.constraint(equalTo: lightBackgroundView.bottomAnchor).isActive = true
+        datePicker.bottomAnchor.constraint(equalTo: viewBackground.bottomAnchor).isActive = true
     }
     
     
