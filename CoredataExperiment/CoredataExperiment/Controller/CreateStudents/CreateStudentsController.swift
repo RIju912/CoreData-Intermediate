@@ -44,6 +44,7 @@ extension CreateStudentsController {
     private func setupNavUI(){
         navigationItem.title = "Create Student"
         setupBackBarButton()
+        handleSaveButton(selector: #selector(handleSaveStudent))
     }
     
     private func setupNameLabel(){
@@ -60,6 +61,17 @@ extension CreateStudentsController {
         enterNameTextField.leftAnchor.constraint(equalTo: nameLabel.rightAnchor).isActive = true
         enterNameTextField.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         enterNameTextField.bottomAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
+    }
+    
+    @objc func handleSaveStudent(){
+        guard let studentName = enterNameTextField.text else { return }
+        let returnError = CoreDataSingleton.shared.createStudent(studentName: studentName)
+        
+        if let err = returnError{
+            print(err)
+        }else{
+            dismiss(animated: true, completion: nil)
+        }
     }
     
 }

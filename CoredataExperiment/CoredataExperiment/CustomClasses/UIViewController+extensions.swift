@@ -27,6 +27,10 @@ extension UIViewController{
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(handleBack))
     }
     
+    func handleSaveButton(selector: Selector){
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: selector)
+    }
+    
     @objc func handleBack(){
         dismiss(animated: true, completion: nil)
     }

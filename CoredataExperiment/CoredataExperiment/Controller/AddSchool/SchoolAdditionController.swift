@@ -75,7 +75,7 @@ extension SchoolAdditionController{
     private func setupNavigationUI(){
         view.backgroundColor = .blue
         setupBackBarButton()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
+        handleSaveButton(selector: #selector(handleSave))
     }
     
     private func setupUI(){
