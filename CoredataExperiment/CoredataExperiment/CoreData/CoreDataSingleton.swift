@@ -35,17 +35,17 @@ struct CoreDataSingleton{
         }
     }
     
-    func createStudent(studentName: String) -> Error?{
+    func createStudent(studentName: String) -> (Student?, Error?){
         let context = persistantContainer.viewContext
         
-        let student = NSEntityDescription.insertNewObject(forEntityName: "Student", into: context)
-        student.setValue(studentName, forKey: "name")
+        let studentDetails = NSEntityDescription.insertNewObject(forEntityName: "Student", into: context) as! Student
+        studentDetails.setValue(studentName, forKey: "name")
         do{
             try context.save()
-            return nil
+            return (studentDetails, nil)
         }catch let err{
             print("Failed to save:", err)
-            return err
+            return (nil, err)
         }
     }
 }

@@ -25,6 +25,8 @@ class CreateStudentsController: UIViewController{
         return textField
     }()
     
+    weak var delegate: StudentAdditionDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -44,7 +46,7 @@ extension CreateStudentsController {
     private func setupNavUI(){
         navigationItem.title = "Create Student"
         setupBackBarButton()
-        handleSaveButton(selector: #selector(handleSaveStudent))
+        handleSaveButton(selector: #selector(handleSavedStudent))
     }
     
     private func setupNameLabel(){
@@ -63,14 +65,17 @@ extension CreateStudentsController {
         enterNameTextField.bottomAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
     }
     
-    @objc func handleSaveStudent(){
+    @objc func handleSavedStudent(){
         guard let studentName = enterNameTextField.text else { return }
-        let returnError = CoreDataSingleton.shared.createStudent(studentName: studentName)
+        let studentTuple = CoreDataSingleton.shared.createStudent(studentName: studentName)
         
-        if let err = returnError{
+        if let err = studentTuple.1{
             print(err)
         }else{
-            dismiss(animated: true, completion: nil)
+            guard let studentDetails = studentTuple.0 else { return }
+            dismiss(animated: true) {
+                self.delegate?.didAddStudentDelegate(student: studentDetails)
+            }
         }
     }
     

@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class StudentsController: UITableViewController{
     
     var schoolDetails: School?
+    var studentsArray = [Student]()
+    let studentCellID = "studentCellID"
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -20,11 +23,39 @@ class StudentsController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRightBarButton(selector: #selector(performPlusBarAction))
+        fetchStudents()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: studentCellID)
     }
     
     @objc private func performPlusBarAction(){
         let createStudentsVC = CreateStudentsController()
+        createStudentsVC.delegate = self
         let navController = UINavigationController(rootViewController: createStudentsVC)
         present(navController, animated: true, completion: nil)
     }
+}
+
+//MARK: Core data Stuffs
+extension StudentsController{
+    private func fetchStudents(){
+        let studentFetchRequest = NSFetchRequest<Student>(entityName: "Student")
+        
+        do{
+            let studentsFetched = try CoreDataSingleton.shared.persistantContainer.viewContext.fetch(studentFetchRequest)
+            self.studentsArray = studentsFetched
+            
+        }catch let err{
+            print("Failed to save:", err)
+        }
+    }
+}
+
+
+extension StudentsController: StudentAdditionDelegate{
+    
+    func didAddStudentDelegate(student: Student) {
+        studentsArray.append(student)
+        tableView.reloadData()
+    }
+
 }

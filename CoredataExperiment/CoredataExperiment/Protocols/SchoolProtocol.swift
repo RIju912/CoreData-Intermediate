@@ -13,3 +13,7 @@ protocol SchoolAdditionDelegate: class{
     func addSchoolDelegate(school: School)
     func editSchoolDelegate(school: School)
 }
+
+protocol StudentAdditionDelegate: class{
+    func didAddStudentDelegate(student: Student)
+}
