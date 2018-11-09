@@ -81,7 +81,7 @@ extension SchoolAdditionController{
     
     private func setupNavigationUI(){
         view.backgroundColor = .blue
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(handleBack))
+        setupBackBarButton()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
     }
     
@@ -133,10 +133,6 @@ extension SchoolAdditionController{
         datePicker.bottomAnchor.constraint(equalTo: lightBackgroundView.bottomAnchor).isActive = true
     }
     
-    
-    @objc func handleBack(){
-        dismiss(animated: true, completion: nil)
-    }
     
     func setupCircularImageStyle(){
         companyImageView.layer.cornerRadius = companyImageView.frame.width / 2

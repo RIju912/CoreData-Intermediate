@@ -58,4 +58,12 @@ extension SchoolsViewController{
         
         return [deleteAction, editAction]
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let studentsVC = StudentsController()
+        let school = self.schools[indexPath.row]
+        studentsVC.schoolDetails = school
+        navigationController?.pushViewController(studentsVC, animated: true)
+    }
 }

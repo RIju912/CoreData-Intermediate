@@ -35,7 +35,7 @@ extension SchoolsViewController{
     }
     
     func setupNavigationRightbarItem(){
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus"), style: .plain, target: self, action: #selector(performRightBarAction))
+        setupRightBarButton(selector: #selector(performRightBarAction))
     }
     
     func setupTableView(){

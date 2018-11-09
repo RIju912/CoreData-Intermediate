@@ -16,3 +16,18 @@ extension UINavigationController{
     }
     
 }
+
+extension UIViewController{
+    
+    func setupRightBarButton(selector: Selector){
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus"), style: .plain, target: self, action: selector)
+    }
+    
+    func setupBackBarButton(){
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(handleBack))
+    }
+    
+    @objc func handleBack(){
+        dismiss(animated: true, completion: nil)
+    }
+}
