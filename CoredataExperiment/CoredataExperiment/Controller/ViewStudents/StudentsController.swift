@@ -38,8 +38,8 @@ class StudentsController: UITableViewController{
 
 //MARK: Core data Stuffs
 extension StudentsController{
+    
     private func fetchStudents(){
-        
         // Fetching Students School wise.
         
         guard let schoolStudents = schoolDetails?.students?.allObjects as? [Student] else { return }

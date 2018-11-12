@@ -25,6 +25,21 @@ class CreateStudentsController: UIViewController{
         return textField
     }()
     
+    let birthdayLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Birthday"
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let enterbirthdayTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "MM/DD/YYYY"
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
     weak var delegate: StudentAdditionDelegate?
     var schoolDetails: School?
     
@@ -34,14 +49,16 @@ class CreateStudentsController: UIViewController{
     }
 }
 
+//MARK: UI Staffs
 extension CreateStudentsController {
     
     func setupUI(){
         setupNavUI()
-        _ = setupBackgroundView(height: 60)
+        _ = setupBackgroundView(height: 120)
         setupNameLabel()
         setupTextField()
-        
+        setupBirthdayLabel()
+        setupBirthdayTextField()
     }
     
     private func setupNavUI(){
@@ -66,10 +83,51 @@ extension CreateStudentsController {
         enterNameTextField.bottomAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
     }
     
+    private func setupBirthdayLabel(){
+        view.addSubview(birthdayLabel)
+        birthdayLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
+        birthdayLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        birthdayLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        birthdayLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
+    private func setupBirthdayTextField(){
+        view.addSubview(enterbirthdayTextField)
+        enterbirthdayTextField.topAnchor.constraint(equalTo: birthdayLabel.topAnchor).isActive = true
+        enterbirthdayTextField.leftAnchor.constraint(equalTo: birthdayLabel.rightAnchor).isActive = true
+        enterbirthdayTextField.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        enterbirthdayTextField.bottomAnchor.constraint(equalTo: birthdayLabel.bottomAnchor).isActive = true
+    }
+    
+    func showError(tittle: String, description: String){
+        let alertController = UIAlertController(title: tittle, message: description, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+
+}
+
+//MARK: Core data Stuffs
+extension CreateStudentsController{
+    
     @objc func handleSavedStudent(){
         guard let studentName = enterNameTextField.text else { return }
         guard let schoolDetails = schoolDetails else { return }
-        let studentTuple = CoreDataSingleton.shared.createStudent(studentName: studentName, schoolName: schoolDetails)
+        guard let birthdayText = enterbirthdayTextField.text else { return }
+        
+        if birthdayText.isEmpty{
+            showError(tittle: "Empty Birthday", description: "You've entered an empty birthday")
+            return
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        guard let birthDayDate = dateFormatter.date(from: birthdayText) else{
+            showError(tittle: "Invalid date", description: "You've entered an invalid birthday date.")
+            return
+        }
+        
+        let studentTuple = CoreDataSingleton.shared.createStudent(studentName: studentName, schoolDetails: schoolDetails, birthDate: birthDayDate)
         
         if let err = studentTuple.1{
             print(err)

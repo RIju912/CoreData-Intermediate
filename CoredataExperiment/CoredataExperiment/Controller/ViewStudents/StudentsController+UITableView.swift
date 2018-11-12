@@ -18,7 +18,11 @@ extension StudentsController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: studentCellID, for: indexPath)
         let studentsDetails = studentsArray[indexPath.row]
-        cell.textLabel?.text = studentsDetails.name
+        if let birthDate = studentsDetails.studentInformation?.birthday{
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM dd, yyyy"
+            cell.textLabel?.text = "\(studentsDetails.name ?? "")   \(dateFormatter.string(from: birthDate))"
+        }
         cell.backgroundColor = UIColor(red: 247/255, green: 66/255, blue: 82/255, alpha: 1)
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15)
