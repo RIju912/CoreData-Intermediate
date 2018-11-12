@@ -26,6 +26,7 @@ class CreateStudentsController: UIViewController{
     }()
     
     weak var delegate: StudentAdditionDelegate?
+    var schoolDetails: School?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +68,8 @@ extension CreateStudentsController {
     
     @objc func handleSavedStudent(){
         guard let studentName = enterNameTextField.text else { return }
-        let studentTuple = CoreDataSingleton.shared.createStudent(studentName: studentName)
+        guard let schoolDetails = schoolDetails else { return }
+        let studentTuple = CoreDataSingleton.shared.createStudent(studentName: studentName, schoolName: schoolDetails)
         
         if let err = studentTuple.1{
             print(err)

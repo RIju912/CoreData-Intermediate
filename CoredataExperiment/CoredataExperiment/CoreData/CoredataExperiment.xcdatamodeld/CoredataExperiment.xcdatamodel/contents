@@ -10,10 +10,12 @@
         <attribute name="founded" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="school" inverseEntity="Student" syncable="YES"/>
     </entity>
     <entity name="Student" representedClassName="Student" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="student" inverseEntity="Address" syncable="YES"/>
+        <relationship name="school" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="School" inverseName="students" inverseEntity="School" syncable="YES"/>
         <relationship name="studentInformation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentInformation" inverseName="student" inverseEntity="StudentInformation" syncable="YES"/>
     </entity>
     <entity name="StudentInformation" representedClassName="StudentInformation" syncable="YES" codeGenerationType="class">
@@ -23,9 +25,9 @@
         <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="studentInformation" inverseEntity="Student" syncable="YES"/>
     </entity>
     <elements>
-        <element name="School" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="Student" positionX="-143.35546875" positionY="193.5859375" width="128" height="90"/>
+        <element name="School" positionX="-65.27734375" positionY="-111.76171875" width="128" height="105"/>
+        <element name="Student" positionX="144.78515625" positionY="27.984375" width="128" height="105"/>
         <element name="StudentInformation" positionX="485.515625" positionY="116.65234375" width="128" height="105"/>
-        <element name="Address" positionX="199.87109375" positionY="-49.8359375" width="128" height="105"/>
+        <element name="Address" positionX="420.73828125" positionY="-59.50390625" width="128" height="105"/>
     </elements>
 </model>

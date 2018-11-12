@@ -30,6 +30,7 @@ class StudentsController: UITableViewController{
     @objc private func performPlusBarAction(){
         let createStudentsVC = CreateStudentsController()
         createStudentsVC.delegate = self
+        createStudentsVC.schoolDetails = self.schoolDetails
         let navController = UINavigationController(rootViewController: createStudentsVC)
         present(navController, animated: true, completion: nil)
     }
@@ -38,15 +39,20 @@ class StudentsController: UITableViewController{
 //MARK: Core data Stuffs
 extension StudentsController{
     private func fetchStudents(){
-        let studentFetchRequest = NSFetchRequest<Student>(entityName: "Student")
         
-        do{
-            let studentsFetched = try CoreDataSingleton.shared.persistantContainer.viewContext.fetch(studentFetchRequest)
-            self.studentsArray = studentsFetched
-            
-        }catch let err{
-            print("Failed to save:", err)
-        }
+        // Fetching Students School wise.
+        
+        guard let schoolStudents = schoolDetails?.students?.allObjects as? [Student] else { return }
+        self.studentsArray = schoolStudents
+//        let studentFetchRequest = NSFetchRequest<Student>(entityName: "Student")
+//
+//        do{
+//            let studentsFetched = try CoreDataSingleton.shared.persistantContainer.viewContext.fetch(studentFetchRequest)
+//            self.studentsArray = studentsFetched
+//
+//        }catch let err{
+//            print("Failed to save:", err)
+//        }
     }
 }
 
