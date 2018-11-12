@@ -40,6 +40,12 @@ struct CoreDataSingleton{
         
         let studentDetails = NSEntityDescription.insertNewObject(forEntityName: "Student", into: context) as! Student
         studentDetails.setValue(studentName, forKey: "name")
+        
+        let studentInformation = NSEntityDescription.insertNewObject(forEntityName: "StudentInformation", into: context) as! StudentInformation
+        
+        studentInformation.regnId = "111"
+        
+        studentDetails.studentInformation = studentInformation
         do{
             try context.save()
             return (studentDetails, nil)

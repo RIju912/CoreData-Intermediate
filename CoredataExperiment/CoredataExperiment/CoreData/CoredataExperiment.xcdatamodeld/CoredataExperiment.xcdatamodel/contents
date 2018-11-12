@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Address" representedClassName="Address" syncable="YES" codeGenerationType="class">
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="address" inverseEntity="Student" syncable="YES"/>
+    </entity>
     <entity name="School" representedClassName="School" syncable="YES" codeGenerationType="class">
         <attribute name="founded" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
@@ -7,9 +13,19 @@
     </entity>
     <entity name="Student" representedClassName="Student" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="student" inverseEntity="Address" syncable="YES"/>
+        <relationship name="studentInformation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentInformation" inverseName="student" inverseEntity="StudentInformation" syncable="YES"/>
+    </entity>
+    <entity name="StudentInformation" representedClassName="StudentInformation" syncable="YES" codeGenerationType="class">
+        <attribute name="birthday" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="birthPlace" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="regnId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="studentInformation" inverseEntity="Student" syncable="YES"/>
     </entity>
     <elements>
         <element name="School" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="Student" positionX="-63" positionY="9" width="128" height="60"/>
+        <element name="Student" positionX="-143.35546875" positionY="193.5859375" width="128" height="90"/>
+        <element name="StudentInformation" positionX="485.515625" positionY="116.65234375" width="128" height="105"/>
+        <element name="Address" positionX="199.87109375" positionY="-49.8359375" width="128" height="105"/>
     </elements>
 </model>
