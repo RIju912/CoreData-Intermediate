@@ -34,7 +34,7 @@ extension SchoolsViewController{
         
         navigationItem.leftBarButtonItems = [
             UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(performResetAction)),
-            UIBarButtonItem(title: "Update", style: .plain, target: self, action: #selector(doUpdates))
+            UIBarButtonItem(title: "Nested Update", style: .plain, target: self, action: #selector(doNestedUpdates))
         ]
     }
     
@@ -66,36 +66,74 @@ extension SchoolsViewController{
         }
     }
     
-    @objc func doUpdates(){
-        // Context isn't thread safe, to perform something or update core data in background we use performBackgroundTask.
-        CoreDataSingleton.shared.persistantContainer.performBackgroundTask ({ (backGroundContext) in
-            
+    // We will create a custom managed object context -> Called as MOC
+    @objc func doNestedUpdates(){
+        DispatchQueue.global(qos: .background).async {
+            let privateContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+            privateContext.parent = CoreDataSingleton.shared.persistantContainer.viewContext
             let request: NSFetchRequest<School> = School.fetchRequest()
             
             do{
-                let schoolData = try backGroundContext.fetch(request)
-                schoolData.forEach({ (school) in
-                    school.name = "C : \(school.name ?? "")"
+                let schoolsUpdate = try privateContext.fetch(request)
+                schoolsUpdate.forEach({ (school) in
+                    school.name = "DD: \(school.name ?? "")"
                 })
                 
                 do{
-                    try backGroundContext.save()
+                    try privateContext.save()
                     DispatchQueue.main.async {
-                        CoreDataSingleton.shared.persistantContainer.viewContext.reset()
-                        self.schools = CoreDataSingleton.shared.fetchSchools()
-                        self.tableView.reloadData()
+                        
+                        do{
+                            let context = CoreDataSingleton.shared.persistantContainer.viewContext
+                            if context.hasChanges{
+                                try context.save()
+                            }
+                            self.tableView.reloadData()
+                        }catch let err {
+                            print("Failed with", err)
+                        }
                     }
-                    
-                }catch let err{
-                    print("Failed with an ", err)
+                } catch let err {
+                    print("Failed with", err)
                 }
-                
-            }catch let err{
-                print("Failed with an ", err)
+            } catch let err {
+                print("Failed with", err)
             }
             
-        })
+        }
     }
+    
+    //Helps in Background Updates
+//    @objc func doUpdates(){
+//        // Context isn't thread safe, to perform something or update core data in background we use performBackgroundTask.
+//        CoreDataSingleton.shared.persistantContainer.performBackgroundTask ({ (backGroundContext) in
+//
+//            let request: NSFetchRequest<School> = School.fetchRequest()
+//
+//            do{
+//                let schoolData = try backGroundContext.fetch(request)
+//                schoolData.forEach({ (school) in
+//                    school.name = "C : \(school.name ?? "")"
+//                })
+//
+//                do{
+//                    try backGroundContext.save()
+//                    DispatchQueue.main.async {
+//                        CoreDataSingleton.shared.persistantContainer.viewContext.reset()
+//                        self.schools = CoreDataSingleton.shared.fetchSchools()
+//                        self.tableView.reloadData()
+//                    }
+//
+//                }catch let err{
+//                    print("Failed with an ", err)
+//                }
+//
+//            }catch let err{
+//                print("Failed with an ", err)
+//            }
+//
+//        })
+//    }
     
     @objc func performRightBarAction(){
         let createSchoolController = SchoolAdditionController()
