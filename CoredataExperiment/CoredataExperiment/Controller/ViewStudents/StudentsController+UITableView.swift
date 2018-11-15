@@ -12,12 +12,12 @@ import UIKit
 //MARK: UITableView Stuffs
 extension StudentsController{
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allNamedStudents[section].count
+        return allCategoryStudents[section].count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: studentCellID, for: indexPath)
-        let studentsDetails = allNamedStudents[indexPath.section][indexPath.row]
+        let studentsDetails = allCategoryStudents[indexPath.section][indexPath.row]
         if let birthDate = studentsDetails.studentInformation?.birthday{
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM dd, yyyy"
@@ -30,18 +30,12 @@ extension StudentsController{
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return allNamedStudents.count
+        return allCategoryStudents.count
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = IntendedLabel()
-        if section == 0{
-            label.text = "Short Names"
-        }else if section == 1{
-            label.text = "Long Names"
-        }else{
-            label.text = "Really Long Names"
-        }
+        label.text = allStudentTypes[section].rawValue
         label.backgroundColor = UIColor(red: 224/255, green: 255/255, blue: 255/255, alpha: 1)
         label.textColor = UIColor.darkGray
         

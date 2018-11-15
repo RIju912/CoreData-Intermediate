@@ -41,7 +41,11 @@ class CreateStudentsController: UIViewController{
     }()
     
     let segmentedControlField: UISegmentedControl = {
-        let items = ["Monitor", "Star", "All-Rounder"]
+        let items = [
+            StudentType.Star.rawValue,
+            StudentType.Monitor.rawValue,
+            StudentType.AllRounder.rawValue
+        ]
         let sc = UISegmentedControl(items: items)
         sc.selectedSegmentIndex = 0
         sc.tintColor = .blue

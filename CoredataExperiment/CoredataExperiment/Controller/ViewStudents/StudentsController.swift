@@ -12,12 +12,14 @@ import CoreData
 class StudentsController: UITableViewController{
     
     var schoolDetails: School?
-    var studentsArray = [Student]()
     let studentCellID = "studentCellID"
-    var shortNameStudents = [Student]()
-    var longNameStudents = [Student]()
-    var reallyLongNameStudents = [Student]()
-    var allNamedStudents = [[Student]]()
+    
+    var allCategoryStudents = [[Student]]()
+    var allStudentTypes = [
+        StudentType.Star,
+        StudentType.AllRounder,
+        StudentType.Monitor
+    ]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,36 +46,16 @@ class StudentsController: UITableViewController{
 extension StudentsController{
     
     private func fetchStudents(){
-        // Fetching Students School wise.
+        // Fetching Students Category wise.
         
         guard let schoolStudents = schoolDetails?.students?.allObjects as? [Student] else { return }
         
-        shortNameStudents = schoolStudents.filter({ (student) -> Bool in
-            if let count = student.name?.count{
-                return count < 6
-            }
-            return false
-        })
-        
-        longNameStudents = schoolStudents.filter({ (student) -> Bool in
-            if let count = student.name?.count{
-                return count > 6 && count < 9
-            }
-            return false
-        })
-        
-        reallyLongNameStudents = schoolStudents.filter({ (student) -> Bool in
-            if let count = student.name?.count{
-                return count > 9
-            }
-            return false
-        })
-        
-        allNamedStudents = [
-            shortNameStudents,
-            longNameStudents,
-            reallyLongNameStudents
-        ]
+        allCategoryStudents = []
+        allStudentTypes.forEach { (studentType) in
+            allCategoryStudents.append(
+                schoolStudents.filter { $0.type == studentType.rawValue }
+            )
+        }
     }
 }
 
@@ -81,8 +63,11 @@ extension StudentsController{
 extension StudentsController: StudentAdditionDelegate{
     
     func didAddStudentDelegate(student: Student) {
-        studentsArray.append(student)
-        tableView.reloadData()
+        guard let section = allStudentTypes.index(of: StudentType(rawValue: student.type!)!) else { return }
+        let row = allCategoryStudents[section].count
+        let insertionIndexPath = IndexPath(row: row, section: section)
+        allCategoryStudents[section].append(student)
+        tableView.insertRows(at: [insertionIndexPath], with: .middle)
     }
 
 }
