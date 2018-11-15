@@ -14,6 +14,10 @@ class StudentsController: UITableViewController{
     var schoolDetails: School?
     var studentsArray = [Student]()
     let studentCellID = "studentCellID"
+    var shortNameStudents = [Student]()
+    var longNameStudents = [Student]()
+    var reallyLongNameStudents = [Student]()
+    var allNamedStudents = [[Student]]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -43,16 +47,33 @@ extension StudentsController{
         // Fetching Students School wise.
         
         guard let schoolStudents = schoolDetails?.students?.allObjects as? [Student] else { return }
-        self.studentsArray = schoolStudents
-//        let studentFetchRequest = NSFetchRequest<Student>(entityName: "Student")
-//
-//        do{
-//            let studentsFetched = try CoreDataSingleton.shared.persistantContainer.viewContext.fetch(studentFetchRequest)
-//            self.studentsArray = studentsFetched
-//
-//        }catch let err{
-//            print("Failed to save:", err)
-//        }
+        
+        shortNameStudents = schoolStudents.filter({ (student) -> Bool in
+            if let count = student.name?.count{
+                return count < 6
+            }
+            return false
+        })
+        
+        longNameStudents = schoolStudents.filter({ (student) -> Bool in
+            if let count = student.name?.count{
+                return count > 6 && count < 9
+            }
+            return false
+        })
+        
+        reallyLongNameStudents = schoolStudents.filter({ (student) -> Bool in
+            if let count = student.name?.count{
+                return count > 9
+            }
+            return false
+        })
+        
+        allNamedStudents = [
+            shortNameStudents,
+            longNameStudents,
+            reallyLongNameStudents
+        ]
     }
 }
 
