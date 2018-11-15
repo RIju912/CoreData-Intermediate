@@ -35,7 +35,7 @@ struct CoreDataSingleton{
         }
     }
     
-    func createStudent(studentName: String, schoolDetails: School, birthDate: Date) -> (Student?, Error?){
+    func createStudent(studentName: String, schoolDetails: School, birthDate: Date, studentType: String) -> (Student?, Error?){
         let context = persistantContainer.viewContext
         
         let studentDetails = NSEntityDescription.insertNewObject(forEntityName: "Student", into: context) as! Student
@@ -43,7 +43,7 @@ struct CoreDataSingleton{
         
         studentDetails.setValue(studentName, forKey: "name")
         studentDetails.school = schoolDetails
-        //studentInformation.regnId = "111" // Change here
+        studentDetails.type = studentType
         studentInformation.birthday = birthDate
         
         studentDetails.studentInformation = studentInformation

@@ -40,6 +40,15 @@ class CreateStudentsController: UIViewController{
         return textField
     }()
     
+    let segmentedControlField: UISegmentedControl = {
+        let items = ["Monitor", "Star", "All-Rounder"]
+        let sc = UISegmentedControl(items: items)
+        sc.selectedSegmentIndex = 0
+        sc.tintColor = .blue
+        sc.translatesAutoresizingMaskIntoConstraints = false
+        return sc
+    }()
+    
     weak var delegate: StudentAdditionDelegate?
     var schoolDetails: School?
     
@@ -54,11 +63,12 @@ extension CreateStudentsController {
     
     func setupUI(){
         setupNavUI()
-        _ = setupBackgroundView(height: 120)
+        _ = setupBackgroundView(height: 170)
         setupNameLabel()
         setupTextField()
         setupBirthdayLabel()
         setupBirthdayTextField()
+        setupSegmentedControl()
     }
     
     private func setupNavUI(){
@@ -99,6 +109,15 @@ extension CreateStudentsController {
         enterbirthdayTextField.bottomAnchor.constraint(equalTo: birthdayLabel.bottomAnchor).isActive = true
     }
     
+    private func setupSegmentedControl(){
+        view.addSubview(segmentedControlField)
+        segmentedControlField.topAnchor.constraint(equalTo: birthdayLabel.bottomAnchor, constant: 8).isActive = true
+        segmentedControlField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        segmentedControlField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
+        segmentedControlField.heightAnchor.constraint(equalToConstant: 34).isActive = true
+    }
+    
+    
     func showError(tittle: String, description: String){
         let alertController = UIAlertController(title: tittle, message: description, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
@@ -127,7 +146,8 @@ extension CreateStudentsController{
             return
         }
         
-        let studentTuple = CoreDataSingleton.shared.createStudent(studentName: studentName, schoolDetails: schoolDetails, birthDate: birthDayDate)
+        
+        let studentTuple = CoreDataSingleton.shared.createStudent(studentName: studentName, schoolDetails: schoolDetails, birthDate: birthDayDate, studentType: segmentedControlField.titleForSegment(at: segmentedControlField.selectedSegmentIndex) ?? "Monitor")
         
         if let err = studentTuple.1{
             print(err)

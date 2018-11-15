@@ -37,12 +37,12 @@ extension StudentsController{
         let label = IntendedLabel()
         if section == 0{
             label.text = "Short Names"
-        }else if section == 0{
+        }else if section == 1{
             label.text = "Long Names"
         }else{
             label.text = "Really Long Names"
         }
-        label.backgroundColor = UIColor.lightGray
+        label.backgroundColor = UIColor(red: 224/255, green: 255/255, blue: 255/255, alpha: 1)
         label.textColor = UIColor.darkGray
         
         return label
