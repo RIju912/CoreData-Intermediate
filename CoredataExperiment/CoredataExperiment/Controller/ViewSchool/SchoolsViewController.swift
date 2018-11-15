@@ -22,7 +22,6 @@ class SchoolsViewController: UITableViewController {
         setupNavigationLeftbarItem()
         setupTableView()
         fetchSchools()
-        // Context isn't thread safe, to perform something or update core data in background we use performBackgroundTask.
     }
 
     
@@ -32,7 +31,11 @@ class SchoolsViewController: UITableViewController {
 extension SchoolsViewController{
     
     func setupNavigationLeftbarItem(){
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(performResetAction))
+        
+        navigationItem.leftBarButtonItems = [
+            UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(performResetAction)),
+            UIBarButtonItem(title: "Update", style: .plain, target: self, action: #selector(doUpdates))
+        ]
     }
     
     func setupNavigationRightbarItem(){
@@ -61,6 +64,37 @@ extension SchoolsViewController{
         } catch let err{
             print("fetch with \(err)")
         }
+    }
+    
+    @objc func doUpdates(){
+        // Context isn't thread safe, to perform something or update core data in background we use performBackgroundTask.
+        CoreDataSingleton.shared.persistantContainer.performBackgroundTask ({ (backGroundContext) in
+            
+            let request: NSFetchRequest<School> = School.fetchRequest()
+            
+            do{
+                let schoolData = try backGroundContext.fetch(request)
+                schoolData.forEach({ (school) in
+                    school.name = "C : \(school.name ?? "")"
+                })
+                
+                do{
+                    try backGroundContext.save()
+                    DispatchQueue.main.async {
+                        CoreDataSingleton.shared.persistantContainer.viewContext.reset()
+                        self.schools = CoreDataSingleton.shared.fetchSchools()
+                        self.tableView.reloadData()
+                    }
+                    
+                }catch let err{
+                    print("Failed with an ", err)
+                }
+                
+            }catch let err{
+                print("Failed with an ", err)
+            }
+            
+        })
     }
     
     @objc func performRightBarAction(){
