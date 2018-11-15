@@ -22,6 +22,7 @@ class SchoolsViewController: UITableViewController {
         setupNavigationLeftbarItem()
         setupTableView()
         fetchSchools()
+        // Context isn't thread safe, to perform something or update core data in background we use performBackgroundTask.
     }
 
     
