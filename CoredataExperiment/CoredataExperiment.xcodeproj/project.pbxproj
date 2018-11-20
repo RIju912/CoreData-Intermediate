@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		900B364B21A417700015F344 /* SchoolsAutoupdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900B364A21A417700015F344 /* SchoolsAutoupdateVC.swift */; };
 		9021C0A521870C5A00121655 /* SchoolAdditionController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021C0A421870C5A00121655 /* SchoolAdditionController+Helper.swift */; };
 		9026F867218DDBD9001B695A /* SchoolsViewController+CreateSchool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026F866218DDBD9001B695A /* SchoolsViewController+CreateSchool.swift */; };
 		9026F869218DDC83001B695A /* SchoolsViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026F868218DDC83001B695A /* SchoolsViewController+UITableView.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		900B364A21A417700015F344 /* SchoolsAutoupdateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolsAutoupdateVC.swift; sourceTree = "<group>"; };
 		9021C0A421870C5A00121655 /* SchoolAdditionController+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SchoolAdditionController+Helper.swift"; sourceTree = "<group>"; };
 		9026F866218DDBD9001B695A /* SchoolsViewController+CreateSchool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SchoolsViewController+CreateSchool.swift"; sourceTree = "<group>"; };
 		9026F868218DDC83001B695A /* SchoolsViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SchoolsViewController+UITableView.swift"; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				9078AEFA216DEA1C000FE76B /* SchoolsViewController+Helper.swift */,
 				9026F866218DDBD9001B695A /* SchoolsViewController+CreateSchool.swift */,
 				9026F868218DDC83001B695A /* SchoolsViewController+UITableView.swift */,
+				900B364A21A417700015F344 /* SchoolsAutoupdateVC.swift */,
 			);
 			path = ViewSchool;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				9021C0A521870C5A00121655 /* SchoolAdditionController+Helper.swift in Sources */,
 				9036A51E21958AF600B5934B /* CreateStudentsController.swift in Sources */,
 				9078AEF9216CE65B000FE76B /* CoreDataSingleton.swift in Sources */,
+				900B364B21A417700015F344 /* SchoolsAutoupdateVC.swift in Sources */,
 				90B8D76820F74DDD00803200 /* SchoolsViewController.swift in Sources */,
 				9036A5202195BC5100B5934B /* StudentsController+UITableView.swift in Sources */,
 				908B89B7219D77120057BD48 /* StudentType.swift in Sources */,
