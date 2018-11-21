@@ -7,8 +7,16 @@
 //
 
 import Foundation
+import UIKit
 
-//struct School{
-//    let name: String
-//    let founded: Date
-//}
+struct SchoolJson: Decodable {
+    let name: String
+    let founded: String
+    var employees: [EmployeeJson]?
+}
+
+struct EmployeeJson: Decodable{
+    let name: String
+    let birthday: String
+    let type: String
+}

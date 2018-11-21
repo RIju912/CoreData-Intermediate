@@ -42,6 +42,7 @@ class SchoolsAutoupdateVC: UITableViewController, NSFetchedResultsControllerDele
         
         tableView.backgroundColor = UIColor(red: 9/255, green: 45/255, blue: 64/255, alpha: 1)
         tableView.register(SchoolsCell.self, forCellReuseIdentifier: cellId)
+        NetworkService.shared.fetchJsonCompanies()
     }
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -96,7 +97,7 @@ class SchoolsAutoupdateVC: UITableViewController, NSFetchedResultsControllerDele
         
         let request: NSFetchRequest<School> = School.fetchRequest()
         
-        request.predicate = NSPredicate(format: "name CONTAINS %@", "Z")
+//        request.predicate = NSPredicate(format: "name CONTAINS %@", "Z")
         
         let context = CoreDataSingleton.shared.persistantContainer.viewContext
         let companiesWithB = try? context.fetch(request) // don't use this try? in production

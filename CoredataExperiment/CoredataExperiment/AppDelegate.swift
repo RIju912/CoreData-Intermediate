@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setUpRootView(){
-        let vc = SchoolsViewController()
+        let vc = SchoolsAutoupdateVC()
         let navigationController = CustomNavigationController(rootViewController: vc)
         window?.rootViewController = navigationController
     }
