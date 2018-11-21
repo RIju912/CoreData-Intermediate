@@ -40,11 +40,12 @@ struct NetworkService {
                     dateFormatter.dateFormat = "MM/dd/yyyy"
                     let date = dateFormatter.date(from: dataCompany.founded)
                     schoolCompany.founded = date
+                    schoolCompany.imageData = Data()
                     
                     dataCompany.employees?.forEach({ (dataEmployees) in
                         let studentEmployee = Student(context: privateContext)
                         
-                        studentEmployee.fullName = dataEmployees.name
+                        studentEmployee.name = dataEmployees.name
                         studentEmployee.type = dataEmployees.type
                         let employeeStudentInformation = StudentInformation(context: privateContext)
                         let birthDayDate = dateFormatter.date(from: dataEmployees.birthday)

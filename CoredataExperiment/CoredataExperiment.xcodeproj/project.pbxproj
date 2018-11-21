@@ -548,7 +548,7 @@
 				900B365221A581060015F344 /* CoredataExperiment_v1.1.xcdatamodel */,
 				9078AEF6216CDC88000FE76B /* CoredataExperiment.xcdatamodel */,
 			);
-			currentVersion = 900B365321A5957B0015F344 /* CoredataExperiment_v1. 2.xcdatamodel */;
+			currentVersion = 9078AEF6216CDC88000FE76B /* CoredataExperiment.xcdatamodel */;
 			path = CoredataExperiment.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

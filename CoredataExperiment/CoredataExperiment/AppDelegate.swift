@@ -24,7 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setUpRootView(){
-        let vc = SchoolsAutoupdateVC()
+        let vc = SchoolsViewController()
+        // let vc = SchoolsAutoupdateVC()
+        // Please uncomment the above line if you want to experiment Json to Core data model change experiment.
         let navigationController = CustomNavigationController(rootViewController: vc)
         window?.rootViewController = navigationController
     }

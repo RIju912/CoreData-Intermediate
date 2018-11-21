@@ -43,7 +43,8 @@ class SchoolsCell: UITableViewCell{
                 let concatenatedString = "\(name) - Founded: \(formattedDate)"
                 schoolFoundedLabel.text = concatenatedString
             }else{
-                schoolFoundedLabel.text = "\(schoolDetails?.name ?? "")  \(schoolDetails?.numberOfStudents ?? "") "
+                schoolFoundedLabel.text = schoolDetails?.name
+                //"\(schoolDetails?.name ?? "")  \(schoolDetails?.numberOfStudents ?? "") "
             }
         }
     }
