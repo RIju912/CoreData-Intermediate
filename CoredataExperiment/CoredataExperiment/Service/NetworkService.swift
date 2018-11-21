@@ -44,7 +44,7 @@ struct NetworkService {
                     dataCompany.employees?.forEach({ (dataEmployees) in
                         let studentEmployee = Student(context: privateContext)
                         
-                        studentEmployee.name = dataEmployees.name
+                        studentEmployee.fullName = dataEmployees.name
                         studentEmployee.type = dataEmployees.type
                         let employeeStudentInformation = StudentInformation(context: privateContext)
                         let birthDayDate = dateFormatter.date(from: dataEmployees.birthday)

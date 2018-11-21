@@ -37,6 +37,7 @@
 /* Begin PBXFileReference section */
 		900B364A21A417700015F344 /* SchoolsAutoupdateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolsAutoupdateVC.swift; sourceTree = "<group>"; };
 		900B364D21A552650015F344 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		900B365221A581060015F344 /* CoredataExperiment_v1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoredataExperiment_v1.1.xcdatamodel; sourceTree = "<group>"; };
 		9021C0A421870C5A00121655 /* SchoolAdditionController+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SchoolAdditionController+Helper.swift"; sourceTree = "<group>"; };
 		9026F866218DDBD9001B695A /* SchoolsViewController+CreateSchool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SchoolsViewController+CreateSchool.swift"; sourceTree = "<group>"; };
 		9026F868218DDC83001B695A /* SchoolsViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SchoolsViewController+UITableView.swift"; sourceTree = "<group>"; };
@@ -526,9 +527,10 @@
 		9078AEF5216CDC88000FE76B /* CoredataExperiment.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				900B365221A581060015F344 /* CoredataExperiment_v1.1.xcdatamodel */,
 				9078AEF6216CDC88000FE76B /* CoredataExperiment.xcdatamodel */,
 			);
-			currentVersion = 9078AEF6216CDC88000FE76B /* CoredataExperiment.xcdatamodel */;
+			currentVersion = 900B365221A581060015F344 /* CoredataExperiment_v1.1.xcdatamodel */;
 			path = CoredataExperiment.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
