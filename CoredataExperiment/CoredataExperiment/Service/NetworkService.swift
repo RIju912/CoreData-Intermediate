@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct NetworkService {
     
@@ -28,12 +29,36 @@ struct NetworkService {
             let jsonDecoder = JSONDecoder()
             do{
                 let dataDecoded = try jsonDecoder.decode([SchoolJson].self, from: data)
+                
+                let privateContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+                privateContext.parent = CoreDataSingleton.shared.persistantContainer.viewContext
+                
                 dataDecoded.forEach({ (dataCompany) in
-                    print(dataCompany.name)
+                    let schoolCompany = School(context: privateContext)
+                    schoolCompany.name = dataCompany.name
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "MM/dd/yyyy"
+                    let date = dateFormatter.date(from: dataCompany.founded)
+                    schoolCompany.founded = date
                     
-                    dataCompany.employees?.forEach({ (employees) in
-                        print(employees.name)
+                    dataCompany.employees?.forEach({ (dataEmployees) in
+                        let studentEmployee = Student(context: privateContext)
+                        
+                        studentEmployee.name = dataEmployees.name
+                        studentEmployee.type = dataEmployees.type
+                        let employeeStudentInformation = StudentInformation(context: privateContext)
+                        let birthDayDate = dateFormatter.date(from: dataEmployees.birthday)
+                        employeeStudentInformation.birthday = birthDayDate
+                        studentEmployee.studentInformation = employeeStudentInformation
+                        studentEmployee.school = schoolCompany
                     })
+                    
+                    do{
+                        try privateContext.save()
+                        try privateContext.parent?.save()
+                    } catch let err{
+                        print("Failed with ", err)
+                    }
                 })
                 
             } catch let err{

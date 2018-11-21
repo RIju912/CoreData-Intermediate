@@ -9,7 +9,16 @@
 import Foundation
 
 enum StudentType: String{
-    case Monitor = "Monitor"
-    case Star = "Star"
-    case AllRounder = "All-Rounder"
+    case Monitor = "Executive"
+    case Star = "Staff"
+    case AllRounder = "Senior Management"
 }
+
+/*
+ Switch it on, when testing online.
+ 
+ case Monitor = "Monitor"
+ case Star = "Star"
+ case AllRounder = "All-Rounder"
+ 
+ */

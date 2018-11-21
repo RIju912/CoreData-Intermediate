@@ -42,7 +42,20 @@ class SchoolsAutoupdateVC: UITableViewController, NSFetchedResultsControllerDele
         
         tableView.backgroundColor = UIColor(red: 9/255, green: 45/255, blue: 64/255, alpha: 1)
         tableView.register(SchoolsCell.self, forCellReuseIdentifier: cellId)
+        
+        callRefreshControl()
+    }
+    
+    func callRefreshControl(){
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(makeServiceCall), for: .valueChanged)
+        refreshControl.tintColor = .white
+        self.refreshControl = refreshControl
+    }
+    
+    @objc func makeServiceCall(){
         NetworkService.shared.fetchJsonCompanies()
+        self.refreshControl?.endRefreshing()
     }
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -148,5 +161,9 @@ class SchoolsAutoupdateVC: UITableViewController, NSFetchedResultsControllerDele
         return cell
     }
     
-    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let studentsController = StudentsController()
+        studentsController.schoolDetails = fetchResultController.object(at: indexPath)
+        navigationController?.pushViewController(studentsController, animated: true)
+    }
 }
