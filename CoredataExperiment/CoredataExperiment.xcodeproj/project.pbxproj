@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		900B364B21A417700015F344 /* SchoolsAutoupdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900B364A21A417700015F344 /* SchoolsAutoupdateVC.swift */; };
 		900B364E21A552650015F344 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900B364D21A552650015F344 /* NetworkService.swift */; };
+		900B365521A596F30015F344 /* ModelMappingv1.1_2.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 900B365421A596F30015F344 /* ModelMappingv1.1_2.xcmappingmodel */; };
+		900B365821A59E220015F344 /* CustomMigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900B365721A59E220015F344 /* CustomMigrationPolicy.swift */; };
 		9021C0A521870C5A00121655 /* SchoolAdditionController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021C0A421870C5A00121655 /* SchoolAdditionController+Helper.swift */; };
 		9026F867218DDBD9001B695A /* SchoolsViewController+CreateSchool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026F866218DDBD9001B695A /* SchoolsViewController+CreateSchool.swift */; };
 		9026F869218DDC83001B695A /* SchoolsViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026F868218DDC83001B695A /* SchoolsViewController+UITableView.swift */; };
@@ -38,6 +40,9 @@
 		900B364A21A417700015F344 /* SchoolsAutoupdateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolsAutoupdateVC.swift; sourceTree = "<group>"; };
 		900B364D21A552650015F344 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		900B365221A581060015F344 /* CoredataExperiment_v1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoredataExperiment_v1.1.xcdatamodel; sourceTree = "<group>"; };
+		900B365321A5957B0015F344 /* CoredataExperiment_v1. 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoredataExperiment_v1. 2.xcdatamodel"; sourceTree = "<group>"; };
+		900B365421A596F30015F344 /* ModelMappingv1.1_2.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = ModelMappingv1.1_2.xcmappingmodel; sourceTree = "<group>"; };
+		900B365721A59E220015F344 /* CustomMigrationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMigrationPolicy.swift; sourceTree = "<group>"; };
 		9021C0A421870C5A00121655 /* SchoolAdditionController+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SchoolAdditionController+Helper.swift"; sourceTree = "<group>"; };
 		9026F866218DDBD9001B695A /* SchoolsViewController+CreateSchool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SchoolsViewController+CreateSchool.swift"; sourceTree = "<group>"; };
 		9026F868218DDC83001B695A /* SchoolsViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SchoolsViewController+UITableView.swift"; sourceTree = "<group>"; };
@@ -90,6 +95,15 @@
 				900B364A21A417700015F344 /* SchoolsAutoupdateVC.swift */,
 			);
 			path = AutoUpdateExample;
+			sourceTree = "<group>";
+		};
+		900B365621A59E120015F344 /* CustomMigration */ = {
+			isa = PBXGroup;
+			children = (
+				900B365421A596F30015F344 /* ModelMappingv1.1_2.xcmappingmodel */,
+				900B365721A59E220015F344 /* CustomMigrationPolicy.swift */,
+			);
+			path = CustomMigration;
 			sourceTree = "<group>";
 		};
 		9026F86A218DDCEE001B695A /* ViewSchool */ = {
@@ -172,6 +186,7 @@
 		9078AEF4216CDC77000FE76B /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				900B365621A59E120015F344 /* CustomMigration */,
 				9078AEF5216CDC88000FE76B /* CoredataExperiment.xcdatamodeld */,
 				9078AEF8216CE65B000FE76B /* CoreDataSingleton.swift */,
 			);
@@ -310,7 +325,9 @@
 				9037779A216BA45700F2547C /* UIColor+theme.swift in Sources */,
 				908B89B5219D48750057BD48 /* UILabel+DrawText.swift in Sources */,
 				903777A2216C89F200F2547C /* UIViewController+extensions.swift in Sources */,
+				900B365521A596F30015F344 /* ModelMappingv1.1_2.xcmappingmodel in Sources */,
 				9078AEF7216CDC88000FE76B /* CoredataExperiment.xcdatamodeld in Sources */,
+				900B365821A59E220015F344 /* CustomMigrationPolicy.swift in Sources */,
 				9078AEFB216DEA1C000FE76B /* SchoolsViewController+Helper.swift in Sources */,
 				9026F869218DDC83001B695A /* SchoolsViewController+UITableView.swift in Sources */,
 				903777A0216C892900F2547C /* SchoolAdditionController.swift in Sources */,
@@ -527,10 +544,11 @@
 		9078AEF5216CDC88000FE76B /* CoredataExperiment.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				900B365321A5957B0015F344 /* CoredataExperiment_v1. 2.xcdatamodel */,
 				900B365221A581060015F344 /* CoredataExperiment_v1.1.xcdatamodel */,
 				9078AEF6216CDC88000FE76B /* CoredataExperiment.xcdatamodel */,
 			);
-			currentVersion = 900B365221A581060015F344 /* CoredataExperiment_v1.1.xcdatamodel */;
+			currentVersion = 900B365321A5957B0015F344 /* CoredataExperiment_v1. 2.xcdatamodel */;
 			path = CoredataExperiment.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
